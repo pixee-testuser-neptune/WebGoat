@@ -23,6 +23,7 @@
 package org.owasp.webgoat.lessons.xxe;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.openpixee.security.XMLInputFactorySecurity;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -93,7 +94,7 @@ public class CommentsCache {
      */
     protected Comment parseXml(String xml) throws JAXBException, XMLStreamException {
         var jc = JAXBContext.newInstance(Comment.class);
-        var xif = XMLInputFactory.newInstance();
+        var xif = XMLInputFactorySecurity.hardenFactory(XMLInputFactory.newInstance());
 
         if (webSession.isSecurityEnabled()) {
             xif.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); // Compliant
