@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.owasp.webgoat</groupId>
     <artifactId>webgoat</artifactId>
@@ -145,7 +146,8 @@
         <xml-resolver.version>1.2</xml-resolver.version>
         <xstream.version>1.4.5</xstream.version> <!-- do not update necessary for lesson -->
         <zxcvbn.version>1.5.2</zxcvbn.version>
-    </properties>
+  <versions.java-security-toolkit>1.0.0</versions.java-security-toolkit>
+ </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -230,7 +232,12 @@
                 <artifactId>webdrivermanager</artifactId>
                 <version>${webdriver.version}</version>
             </dependency>
-        </dependencies>
+   <dependency>
+    <groupId>io.openpixee</groupId>
+    <artifactId>java-security-toolkit</artifactId>
+    <version>${versions.java-security-toolkit}</version>
+   </dependency>
+  </dependencies>
     </dependencyManagement>
 
     <profiles>
@@ -276,7 +283,7 @@
                                     <goal>start</goal>
                                 </goals>
                                 <configuration>
-                                    <workingDir></workingDir>
+                                    <workingDir/>
                                     <arguments>
                                         <argument>java</argument>
                                         <argument>-jar</argument>
@@ -512,7 +519,11 @@
             <artifactId>webdrivermanager</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
+  <dependency>
+   <groupId>io.openpixee</groupId>
+   <artifactId>java-security-toolkit</artifactId>
+  </dependency>
+ </dependencies>
 
     <build>
         <plugins>
